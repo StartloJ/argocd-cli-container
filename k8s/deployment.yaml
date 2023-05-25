@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-cli
+  labels:
+    app: argocd
+    project: opsta
+    tier: cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocd
+      tier: cli
+  template:
+    metadata:
+      labels:
+        app: argocd
+        tier: cli
+    spec:
+      containers:
+      - name: argocd-cli
+        image: dukecyber/argo-cli:v2.7.3-alpine
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "64m"
+          limits:
+            memory: "128Mi"
+            cpu: "128m"

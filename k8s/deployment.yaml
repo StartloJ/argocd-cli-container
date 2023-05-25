@@ -22,6 +22,8 @@ spec:
       containers:
       - name: argocd-cli
         image: dukecyber/argo-cli:v2.7.3-alpine
+        command: [ "/bin/ash", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
         resources:
           requests:
             memory: "64Mi"
